@@ -1,5 +1,5 @@
 # dmidecode-in-container
-Would you like to run dmidecode in Podman container or OpenShift Pod?
+Would you like to run dmidecode in a container without privileged mode?
 
 - dmidecode opens `/dev/mem`, so the container have to include the /dev file.
 - To access /dev/mem, `SYS_RAWIO` capability is necessary.
