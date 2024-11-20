@@ -1,0 +1,17 @@
+variant: openshift
+version: 4.17.0
+metadata:
+  name: 99-worker-devmem
+  labels:
+    machineconfiguration.openshift.io/role: worker
+storage:
+  files:
+    - path: /etc/crio/crio.conf.d/99-devmem
+      mode: 0644
+      overwrite: true
+      contents:
+        inline: |
+          [crio.runtime]
+          additional_devices = [
+              "/dev/mem"
+          ]

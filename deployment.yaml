@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: testapp
+  name: testapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: testapp
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: testapp
+    spec:
+      serviceAccountName: sa-dmidecode
+      securityContext:
+        runAsUser: 0
+      containers:
+      - image: registry.access.redhat.com/ubi9:latest
+        command:
+        - "sleep"
+        - "infinity"
+        name: ubi9
+        securityContext:
+          capabilities:
+            add:
+            - SYS_RAWIO
